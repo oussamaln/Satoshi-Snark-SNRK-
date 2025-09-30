@@ -1,0 +1,76 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract SNRKToken is ERC20, ReentrancyGuard, Ownable {
+    uint256 public constant INITIAL_SUPPLY = 777_000_000 * 1e18;
+    uint256 public constant MAX_BURN = 69_420 * 1e18;
+
+    address public agentWallet;
+    bool public agentLocked;
+
+    event ChaosBurn(address indexed from, uint256 amount);
+    event AgentWalletSet(address indexed agent);
+    event InitialMint(address indexed to, uint256 amount);
+
+    modifier onlyAgent() {
+        require(msg.sender == agentWallet, "Only agent can call");
+        _;
+    }
+
+    constructor(
+        address airdropWallet,
+        address liquidityWallet,
+        address treasuryWallet,
+        address teamWallet,
+        address chaosWallet
+    )
+        ERC20("Satoshi Snark", "SNRK")
+        Ownable(msg.sender)   // ✅ Fix for Ownable v5
+    {
+        require(
+            airdropWallet != address(0) &&
+            liquidityWallet != address(0) &&
+            treasuryWallet != address(0) &&
+            teamWallet != address(0) &&
+            chaosWallet != address(0),
+            "Invalid distribution wallet"
+        );
+
+        uint256 forty = INITIAL_SUPPLY * 40 / 100;
+        uint256 twentyFive = INITIAL_SUPPLY * 25 / 100;
+        uint256 twenty = INITIAL_SUPPLY * 20 / 100;
+        uint256 ten = INITIAL_SUPPLY * 10 / 100;
+        uint256 five = INITIAL_SUPPLY * 5 / 100;
+
+        _mint(airdropWallet, forty);
+        _mint(liquidityWallet, twentyFive);
+        _mint(treasuryWallet, twenty);
+        _mint(teamWallet, ten);
+        _mint(chaosWallet, five);
+
+        require(totalSupply() == INITIAL_SUPPLY, "Supply mismatch");
+    }
+
+    function setAgentWallet(address _agent) external onlyOwner {
+        require(!agentLocked, "Agent already locked");
+        require(_agent != address(0), "Invalid address");
+        agentWallet = _agent;
+        agentLocked = true;
+        emit AgentWalletSet(_agent);
+    }
+
+    function chaosBurn(address from, uint256 amount)
+        external
+        onlyAgent
+        nonReentrant
+    {
+        require(from != agentWallet, "Agent cannot burn self");
+        require(amount <= MAX_BURN, "Exceeds per-burn limit");
+        _burn(from, amount);
+        emit ChaosBurn(from, amount);
+    }
+}
