@@ -92,4 +92,4 @@ Welcome to the Snark Casino. 🎲
 
 Blockscout Verification: https://base.blockscout.com/token/0x08fdE93df9225f39A56c9511086d89a03a1d7E81
 Telegram: https://t.me/SatoshiSnark
-Twitter/X: x.com/Th33ros
+Twitter: https://x.com/Th33ros
