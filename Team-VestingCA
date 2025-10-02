@@ -1,0 +1,39 @@
+# 📜 Satoshi Snark (SNRK) – Official Contracts
+
+Here are the official, verified contracts for **Satoshi Snark (SNRK)** on **BaseChain**.  
+All addresses are publicly available and verified on [Blockscout](https://base.blockscout.com).
+
+---
+
+## 🔹 Token Contract
+- **Name:** Satoshi Snark  
+- **Symbol:** SNRK  
+- **Total Supply:** 777,000,000 SNRK  
+- **Contract Address:** [0x08fdE93df9225f39A56c9511086d89a03a1d7E81](https://base.blockscout.com/token/0x08fdE93df9225f39A56c9511086d89a03a1d7E81)  
+- **Deployer:** 0x0B24179c64739B4aF03F0C7134294D964A4c63EB  
+
+---
+
+## 🔹 Team Vesting Contract
+- **Contract Address:** [0xe95A0cB271A728B85F0eeFd3bF41E3FdB52BE737](https://base.blockscout.com/address/0xe95A0cB271A728B85F0eeFd3bF41E3FdB52BE737)  
+- **Beneficiary (Team Wallet):** 0x1Fe442eE696173f2931c5B55693614F43F042c0C  
+- **Lock Period:** 6 months (from deployment)  
+- **Purpose:** Holds **Team & Advisors allocation** securely until the lock period ends.  
+- **Deployer:** 0x0B24179c64739B4aF03F0C7134294D964A4c63EB  
+
+---
+
+## 🔹 Token Allocation
+1. **Airdrops & Rewards** → 40% (310,800,000 SNRK)  
+2. **Liquidity & DEX / CEX Reserve** → 25% (194,250,000 SNRK)  
+3. **Treasury (Ecosystem Growth)** → 20% (155,400,000 SNRK)  
+3.1 **Staking Pool** → 10% (77,700,000 SNRK)  
+4. **Team & Advisors** → 10% (77,700,000 SNRK) *(locked for 6 months)*  
+5. **Events, Chaos Burns & Narrative Fuel** → 5% (38,850,000 SNRK)  
+
+---
+
+## 🔹 Notes
+- Only trust contract addresses listed here on the **official GitHub repository**.  
+- The vesting contract ensures the **team allocation cannot move** until the 6-month lock period is completed.  
+- All contracts are open-source and verified.  
